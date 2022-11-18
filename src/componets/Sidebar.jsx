@@ -14,8 +14,6 @@ import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 
 class Sidebar extends Component {
     
- 
-    
     state = {
         activeSidebar:true,
          tags:[
@@ -52,12 +50,19 @@ class Sidebar extends Component {
     render() { 
 
         return (
-        <div>
+        <div style={{position: 'fixed',
+            top: 0,
+            margin: 0,
+            width: '100%'}}>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div className="navbar-brand" ><ParkTwoToneIcon style={{marginLeft:'10px',fontSize:'40px',color:'greenyellow'}}/>jungle</div>
+  
+    <button className="navbar-brand" onClick={this.closeSidebar}  style={{background:'transparent',border:'none',right:0, marginRight:'10px',float:'right'}}>
+    <MenuOutlinedIcon style={{color : this.state.activeSidebar === true?   '#ffffff' :'#777777',fontSize:'30px',color:'greenyellow'}}/>
+    <ParkTwoToneIcon style={{marginLeft:'4px',marginRight:'4px',fontSize:'30px',color:'greenyellow'}}/>jungle
+    </button>
+
     <button onClick={this.closeSidebar}  style={{background:'transparent',border:'none',right:0, marginRight:'10px',float:'right'}}><ShoppingCartOutlinedIcon style={{color : this.state.activeSidebar === true?   '#ffffff' :'#777777'}}/></button>
     <button onClick={this.closeSidebar}  style={{background:'transparent',border:'none',right:0, marginRight:'10px',float:'right'}}><NotificationsNoneOutlinedIcon style={{color : this.state.activeSidebar === true?   '#ffffff' :'#777777'}}/></button>
-    <button onClick={this.closeSidebar}  style={{background:'transparent',border:'none',right:0, marginRight:'10px',float:'right'}}><MenuOutlinedIcon style={{color : this.state.activeSidebar === true?   '#ffffff' :'#777777',fontSize:'40px',color:'greenyellow'}}/></button>
  
   </nav>
             <main className="d-flex flex-nowrap">

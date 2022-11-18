@@ -5,9 +5,9 @@ import AppArea from './componets/AppArea';
 function App() {
   return (
     <div className="App">
-    <Sidebar/>
+    
     <AppArea/>
-   
+    <Sidebar/>
     </div>
   );
 }

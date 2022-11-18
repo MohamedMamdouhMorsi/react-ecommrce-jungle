@@ -1,14 +1,16 @@
-import React from 'react'
-
-const AppArea = () => {
-  return (
-    <div className='AppArea'>
-    <h1>
-    Welcome to jungle
-    </h1>
-    
-    </div>
-  )
+import React, { Component } from 'react'
+import Products from './Products';
+class AppArea extends Component {
+    constructor(props) {
+        super(props);
+    }
+    state = {  }
+    render() { 
+        return ( <div className='container'>
+            
+            <Products/>
+            </div> );
+    }
 }
-
-export default AppArea
+ 
+export default AppArea;
