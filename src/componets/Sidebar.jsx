@@ -55,15 +55,16 @@ class Sidebar extends Component {
             margin: 0,
             width: '100%'}}>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-  
-    <button className="navbar-brand" onClick={this.closeSidebar}  style={{background:'transparent',border:'none',right:0, marginRight:'10px',float:'right'}}>
+        <div style={{left:0,marginLeft:0}}>
+    <button  onClick={this.closeSidebar}  style={{background:'transparent',border:'none',right:0, marginRight:'10px',float:'right',color:"white",fontWeight:"bold",fontSize:"20px"}}>
     <MenuOutlinedIcon style={{color : this.state.activeSidebar === true?   '#ffffff' :'#777777',fontSize:'30px',color:'greenyellow'}}/>
     <ParkTwoToneIcon style={{marginLeft:'4px',marginRight:'4px',fontSize:'30px',color:'greenyellow'}}/>jungle
     </button>
-
+    </div>
+<div style={{right:0,marginRight:0}}>
     <button onClick={this.closeSidebar}  style={{background:'transparent',border:'none',right:0, marginRight:'10px',float:'right'}}><ShoppingCartOutlinedIcon style={{color : this.state.activeSidebar === true?   '#ffffff' :'#777777'}}/></button>
     <button onClick={this.closeSidebar}  style={{background:'transparent',border:'none',right:0, marginRight:'10px',float:'right'}}><NotificationsNoneOutlinedIcon style={{color : this.state.activeSidebar === true?   '#ffffff' :'#777777'}}/></button>
- 
+    </div>
   </nav>
             <main className="d-flex flex-nowrap">
             <div className={this.sidebarCls()} style={{width: '280px'}}>

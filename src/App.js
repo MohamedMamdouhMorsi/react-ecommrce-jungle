@@ -1,13 +1,15 @@
-import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
-import ThreeDRotation from '@mui/icons-material/ThreeDRotation';
-import Sidebar from './componets/Sidebar';
-import AppArea from './componets/AppArea';
+
+import Iapp from './componets/Iapp';
 function App() {
+  let product = {};
+  const onProductClick =(p)=>{
+    product = p;
+  }
   return (
     <div className="App">
     
-    <AppArea/>
-    <Sidebar/>
+    <Iapp />
+  
     </div>
   );
 }
