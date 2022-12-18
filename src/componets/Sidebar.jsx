@@ -10,7 +10,7 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
-
+import { useSelector , useDispatch} from 'react-redux';
 
 class Sidebar extends Component {
     
@@ -20,18 +20,23 @@ class Sidebar extends Component {
         {
             name:"Home",
             icon: <HomeOutlinedIcon />,
+            link:'/',
             active:true
         },{
             name:"Dashboard",
+            link:'/',
             icon:<SpeedOutlinedIcon />
         },{
             name:"Orders",
+            link:'/cart',
             icon:<CalendarMonthIcon />
         },{
             name:"Products",
+            link:'/products',
             icon:<GridViewIcon />
         },{
             name:"Customers",
+            link:'/',
             icon:<AccountCircleRoundedIcon />
         }
     ] } 
@@ -45,8 +50,14 @@ class Sidebar extends Component {
 
     closeSidebar =()=>{
          this.setState({activeSidebar:this.state.activeSidebar == true ? false : true});
-         
+       
     }
+    getCartNum =()=>{
+      var cartMemoryTx = window.localStorage.getItem('cart')? window.localStorage.getItem('cart'):'[]';
+      var cartMemoryJs = JSON.parse(cartMemoryTx);
+      return cartMemoryJs.length;
+    }
+    
     render() { 
 
         return (
@@ -62,7 +73,11 @@ class Sidebar extends Component {
     </button>
     </div>
 <div style={{right:0,marginRight:0}}>
-    <button onClick={this.closeSidebar}  style={{background:'transparent',border:'none',right:0, marginRight:'10px',float:'right'}}><ShoppingCartOutlinedIcon style={{color : this.state.activeSidebar === true?   '#ffffff' :'#777777'}}/></button>
+    <button onClick={this.closeSidebar}  style={{background:'transparent',border:'none',right:0, marginRight:'10px',float:'right'}}><ShoppingCartOutlinedIcon style={{color : this.state.activeSidebar === true?   '#ffffff' :'#777777'}}/>
+    <span id='cartCounter' style={{fontWeight:'Bold',color:'#fff'}}>
+      {this.getCartNum()}
+    </span>
+    </button>
     <button onClick={this.closeSidebar}  style={{background:'transparent',border:'none',right:0, marginRight:'10px',float:'right'}}><NotificationsNoneOutlinedIcon style={{color : this.state.activeSidebar === true?   '#ffffff' :'#777777'}}/></button>
     </div>
   </nav>
@@ -80,7 +95,7 @@ class Sidebar extends Component {
                  
                     return (
                             <li id={tag.name} key={tag.name+"key"} className="nav-item ">
-                                <a href="#" className={cl} aria-current="page">
+                                <a href={tag.link} className={cl} aria-current="page">
                               <span className='m-2'>{tag.icon}</span>  
                                 {tag.name}
                                 </a>

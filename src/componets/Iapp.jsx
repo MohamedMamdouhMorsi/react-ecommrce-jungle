@@ -2,24 +2,33 @@ import React, { Component } from 'react'
 import Sidebar from './Sidebar'
 import Screen from './Screen'
 import Products from './Products';
-
+import CartView from './CartView'
+import {BrowserRouter as Router ,Switch,Routes, Route} from 'react-router-dom';
 class Iapp extends Component {
-    constructor(props) {
-        super(props);
-    }
-    state = { screenType:'productCarousel',screenProduct:{} }
+   
+    state = { screenProduct:{} ,start:true}
 
     onProductClick =  (product)=>{
         this.setState({screenProduct:product});
-        this.setState({screenType:'productCarousel'});
-
+    }
+    onStartScreen =()=>{
+        this.setState({start:false});
     }
     render() { 
         return ( <div >
+            <Router>
+               <Routes>
+               <Route path='/' element={<Products onProductClick={this.onProductClick}/>} />
+               <Route path='/products' element={<Products onProductClick={this.onProductClick}/>} />
+               <Route path='/cart' element={<CartView  onProductClick={this.onProductClick}/>} />
+               </Routes>
+               
+                
+           
             
-            <Products onProductClick={this.onProductClick}/>
             <Sidebar />
-            <Screen screenType={this.state.screenType}  screenProduct={this.state.screenProduct}/>
+            <Screen screenType='productCarousel' key='productScreen' id='productScreen' screenProduct={this.state.screenProduct}/>
+            </Router>
             </div> );
     }
 }

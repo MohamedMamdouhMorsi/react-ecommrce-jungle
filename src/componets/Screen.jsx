@@ -6,13 +6,25 @@ class Screen extends Component {
     }
     state = {  }
     closeScreen = ()=>{
-        document.getElementById("screen").className = "screen";
+        if(document.getElementById(this.props.id)){
+            document.getElementById(this.props.id).className = "screen";
+        } 
     }
     screenBody = ()=>{
         if(this.props.screenType == 'productCarousel'){
             let v = 0;
             return (
                 <Carousel product={this.props.screenProduct} active={v}/>
+            )
+        }else if(this.props.screenType == 'start'){
+            return(
+            <div style={{width:'100%',backgroundColor:'#fff',height:'50vh'}}>
+                <h1>
+                    Welcome To Jungle 
+                </h1>
+                <p>Start Your Journy Now </p>
+                <button onClick={this.props.onStartScreen()}>Start</button>
+            </div>
             )
         }
         return '';
@@ -21,7 +33,7 @@ class Screen extends Component {
       
         return (
         
-            <div className='screen' id='screen'>
+            <div className={this.props.screenType == 'start'?'screen active' : 'screen'} id={this.props.id} >
                 <div className='screenBackground Pointer' onClick={this.closeScreen}>
                 </div>
                 <div className='screenBody' id='screenBody'>
