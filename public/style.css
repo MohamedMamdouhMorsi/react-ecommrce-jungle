@@ -1,3 +1,26 @@
 .Pointer{
     cursor: pointer;
 }
+a:link{
+    text-decoration: none;
+}
+.imgCart{
+    width:20%;
+    max-height: fit-content;
+    position: relative;
+    float: left;
+    display: block;
+}
+.dataCart{
+    width:80%;
+    height: 100px;
+    position: relative;
+    padding-left: 10px;
+    float: left;
+    display: block; 
+}
+.contCart{
+    width: 100%;
+    margin-bottom: 10px;
+    border-bottom: 1px #888 solid;
+}

@@ -18,14 +18,11 @@ class Iapp extends Component {
         return ( <div >
             <Router>
                <Routes>
-               <Route path='/' element={<Products onProductClick={this.onProductClick}/>} />
-               <Route path='/products' element={<Products onProductClick={this.onProductClick}/>} />
-               <Route path='/cart' element={<CartView  onProductClick={this.onProductClick}/>} />
-               </Routes>
-               
-                
-           
-            
+                    <Route path='/' element={<Products onProductClick={this.onProductClick}/>} />
+                    <Route path='/products' element={<Products onProductClick={this.onProductClick}/>} />
+                    <Route path='/cart' element={<CartView  onProductClick={this.onProductClick}/>} />
+                </Routes>
+
             <Sidebar />
             <Screen screenType='productCarousel' key='productScreen' id='productScreen' screenProduct={this.state.screenProduct}/>
             </Router>

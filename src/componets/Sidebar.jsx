@@ -55,7 +55,15 @@ class Sidebar extends Component {
     getCartNum =()=>{
       var cartMemoryTx = window.localStorage.getItem('cart')? window.localStorage.getItem('cart'):'[]';
       var cartMemoryJs = JSON.parse(cartMemoryTx);
-      return cartMemoryJs.length;
+      var qty = 0;
+      for(var j = 0 ; j < cartMemoryJs.length;j++){
+         qty = qty + cartMemoryJs[j].cartQty;
+      }
+      return qty;
+      
+    }
+    menuColor=()=>{
+      return  this.state.activeSidebar === true?   '#ffffff' :'#777777';
     }
     
     render() { 
@@ -68,17 +76,22 @@ class Sidebar extends Component {
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div style={{left:0,marginLeft:0}}>
     <button  onClick={this.closeSidebar}  style={{background:'transparent',border:'none',right:0, marginRight:'10px',float:'right',color:"white",fontWeight:"bold",fontSize:"20px"}}>
-    <MenuOutlinedIcon style={{color : this.state.activeSidebar === true?   '#ffffff' :'#777777',fontSize:'30px',color:'greenyellow'}}/>
+    <MenuOutlinedIcon style={{color :this.menuColor(),fontSize:'30px',color:'greenyellow'}}/>
     <ParkTwoToneIcon style={{marginLeft:'4px',marginRight:'4px',fontSize:'30px',color:'greenyellow'}}/>jungle
     </button>
     </div>
 <div style={{right:0,marginRight:0}}>
-    <button onClick={this.closeSidebar}  style={{background:'transparent',border:'none',right:0, marginRight:'10px',float:'right'}}><ShoppingCartOutlinedIcon style={{color : this.state.activeSidebar === true?   '#ffffff' :'#777777'}}/>
-    <span id='cartCounter' style={{fontWeight:'Bold',color:'#fff'}}>
+    
+      <a  href='/cart'  style={{background:'transparent',border:'none',right:0, marginRight:'10px',float:'right'}} >
+
+      
+      <ShoppingCartOutlinedIcon  style={{color : this.menuColor()}}/>
+    <span id='cartCounter' style={{fontWeight:'Bold',color:this.menuColor()}}>
       {this.getCartNum()}
     </span>
-    </button>
-    <button onClick={this.closeSidebar}  style={{background:'transparent',border:'none',right:0, marginRight:'10px',float:'right'}}><NotificationsNoneOutlinedIcon style={{color : this.state.activeSidebar === true?   '#ffffff' :'#777777'}}/></button>
+    </a>
+   
+    <button onClick={this.closeSidebar}  style={{background:'transparent',border:'none',right:0, marginRight:'10px',float:'right'}}><NotificationsNoneOutlinedIcon style={{color :this.menuColor()}}/></button>
     </div>
   </nav>
             <main className="d-flex flex-nowrap">

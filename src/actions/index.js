@@ -4,3 +4,15 @@ export const addProduct =(product)=>{
         product:product
     }
 }
+export const editCart =(product)=>{
+    return {
+        type:'EDITCART',
+        product:product
+    }
+}
+export const deleteCart =(product)=>{
+    return {
+        type:'DELETECART',
+        product:product
+    }
+}
